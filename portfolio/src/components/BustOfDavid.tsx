@@ -31,7 +31,7 @@ export default function BustOfDavid() {
       <directionalLight position={[5, 10, 5]} intensity={2.5} />
       <directionalLight position={[-3, 2, -3]} intensity={0.8} />
       <Suspense fallback={null}>
-        <Bounds fit clip observe damping={0}>
+        <Bounds fit clip observe>
           <Center>
             <Model />
           </Center>
