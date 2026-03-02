@@ -7,9 +7,7 @@ function Model() {
   const groupRef = useRef<THREE.Group>(null);
   const { scene } = useGLTF('/bust-of-david.glb');
 
-  useFrame((_, delta) => {
-    if (groupRef.current) groupRef.current.rotation.y += delta * 0.4;
-  });
+  // The model remains static (no rotation)
 
   // Make materials double sided
   scene.traverse((child: any) => {
@@ -34,11 +32,11 @@ export default function BustOfDavid() {
       gl={{ alpha: true, antialias: true }}
       style={{ width: '100%', height: '100%', display: 'block', background: 'transparent' }}
     >
-      <ambientLight intensity={3.0} />
-      <directionalLight position={[5, 10, 5]} intensity={4.5} />
-      <directionalLight position={[-3, 2, -3]} intensity={2.0} />
+      <ambientLight intensity={10.0} />
+      <directionalLight position={[5, 10, 5]} intensity={15.0} />
+      <directionalLight position={[-3, 2, -3]} intensity={8.0} />
       <Suspense fallback={null}>
-        <Bounds fit clip observe>
+        <Bounds fit clip observe margin={0.7}>
           <Center>
             <Model />
           </Center>
