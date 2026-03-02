@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import ScrambledText from './ScrambledText';
 
 export default function Hero() {
   const xRef = useRef<HTMLSpanElement>(null);
@@ -36,26 +35,18 @@ export default function Hero() {
       {/* Hero Headline */}
       <section className="w-full text-center px-4">
         <div className="flex flex-col md:flex-row md:justify-center md:gap-[0.2em]">
-          <ScrambledText
+          <span
             className="hero-text uppercase text-brutalist-grey hero-word"
             style={{ fontSize: 'clamp(3.5rem, 22vw, 14rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}
-            radius={150}
-            duration={1.2}
-            speed={0.5}
-            scrambleChars="ABCDEFGHIJKLMNOPQRSTUVWXYZ#@!*"
           >
             CHHAY
-          </ScrambledText>
-          <ScrambledText
+          </span>
+          <span
             className="hero-text uppercase text-brutalist-grey hero-word"
             style={{ fontSize: 'clamp(3.5rem, 22vw, 14rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}
-            radius={150}
-            duration={1.2}
-            speed={0.5}
-            scrambleChars="ABCDEFGHIJKLMNOPQRSTUVWXYZ#@!*"
           >
             VIZUAL
-          </ScrambledText>
+          </span>
         </div>
         <p className="uppercase tracking-[0.2em] md:tracking-[0.4em] text-base sm:text-2xl md:text-4xl mt-2 text-brutalist-grey opacity-70">
           ARCHITECTURAL <span className="opacity-50">✦</span> VISUALIZATION
@@ -93,6 +84,6 @@ export default function Hero() {
           X : <span ref={xRef}>522</span>&nbsp;&nbsp;&nbsp;Y : <span ref={yRef}>006</span>
         </div>
       </div>
-    </main>
+    </main >
   );
 }

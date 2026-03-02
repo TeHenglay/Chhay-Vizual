@@ -11,6 +11,13 @@ function Model() {
     if (groupRef.current) groupRef.current.rotation.y += delta * 0.4;
   });
 
+  // Make materials double sided
+  scene.traverse((child: any) => {
+    if (child.isMesh && child.material) {
+      child.material.side = THREE.DoubleSide;
+    }
+  });
+
   return (
     <group ref={groupRef}>
       <primitive object={scene} />
@@ -27,9 +34,9 @@ export default function BustOfDavid() {
       gl={{ alpha: true, antialias: true }}
       style={{ width: '100%', height: '100%', display: 'block', background: 'transparent' }}
     >
-      <ambientLight intensity={1.5} />
-      <directionalLight position={[5, 10, 5]} intensity={2.5} />
-      <directionalLight position={[-3, 2, -3]} intensity={0.8} />
+      <ambientLight intensity={3.0} />
+      <directionalLight position={[5, 10, 5]} intensity={4.5} />
+      <directionalLight position={[-3, 2, -3]} intensity={2.0} />
       <Suspense fallback={null}>
         <Bounds fit clip observe>
           <Center>
