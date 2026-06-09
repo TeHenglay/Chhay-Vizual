@@ -10,6 +10,7 @@ import About from './components/About'
 import SkillsMarquee from './components/SkillsMarquee'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
+const AdminPage = lazy(() => import('./pages/AdminPage'))
 
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 import ScrollToTop from './components/ScrollToTop'
@@ -40,6 +41,11 @@ function App() {
         <Route path="/projects" element={
             <Suspense fallback={<div className="min-h-screen bg-brutalist-black" />}>
               <ProjectsPage />
+            </Suspense>
+          } />
+        <Route path="/admin/*" element={
+            <Suspense fallback={<div className="min-h-screen bg-brutalist-black" />}>
+              <AdminPage />
             </Suspense>
           } />
       </Routes>

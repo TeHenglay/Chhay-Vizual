@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
-import { projects } from '../data/projects';
+import { MediaItem } from '../data/projects';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import { useReveal } from '../hooks/useReveal';
-
+import { usePageProjects, PageProject as Project } from '../hooks/useProjects';
 type LightboxState = { projectId: string; mediaIndex: number } | null;
 
 
@@ -11,7 +11,7 @@ function ProjectBlock({
   project,
   onLightbox,
 }: {
-  project: typeof projects[number];
+  project: Project;
   onLightbox: (mediaIndex: number) => void;
 }) {
   const headerRef = useReveal<HTMLDivElement>();
@@ -49,13 +49,13 @@ function ProjectBlock({
               </div>
             </>
           ) : (
-            <img src={hero.src} alt="" loading="lazy" className="w-full object-cover" style={{ height: heroHeight }} />
+            <img src={hero.src} alt={`${project.title} — ${project.category}`} loading="lazy" className="w-full object-cover" style={{ height: heroHeight }} />
           )}
         </div>
 
         {/* Remaining images — right, 2-col scrollable grid */}
         <div className="gallery-scroll flex-1 overflow-y-auto grid grid-cols-2 gap-3 content-start" style={{ maxHeight: heroHeight, minHeight: '200px' }}>
-          {rest.map((item, i) => (
+          {rest.map((item: MediaItem, i: number) => (
             <div key={i} className="overflow-hidden cursor-zoom-in group relative"
               style={{ height: 'calc((clamp(240px, 55vw, 560px) - 0.75rem) / 2)' }}
               onClick={() => onLightbox(i + 1)}>
@@ -70,7 +70,7 @@ function ProjectBlock({
                   </div>
                 </>
               ) : (
-                <img src={item.src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                <img src={item.src} alt={`${project.title} view ${i + 2}`} loading="lazy" className="w-full h-full object-cover" />
               )}
             </div>
           ))}
@@ -80,10 +80,22 @@ function ProjectBlock({
   );
 }
 
+const PER_PAGE = 8;
+
 export default function ProjectsPage() {
+  const projects = usePageProjects();
+  const [page, setPage] = useState(0);
   const [lightbox, setLightbox] = useState<LightboxState>(null);
   const [showTop, setShowTop] = useState(false);
   const headingRef = useReveal<HTMLDivElement>();
+
+  const totalPages = Math.ceil(projects.length / PER_PAGE);
+  const visibleProjects = projects.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+
+  const goToPage = (p: number) => {
+    setPage(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const activeProject = lightbox ? projects.find((p) => p.id === lightbox.projectId) ?? null : null;
   const activeMedia = activeProject ? activeProject.media[lightbox!.mediaIndex] : null;
@@ -93,6 +105,12 @@ export default function ProjectsPage() {
     const next = (lightbox.mediaIndex + dir + activeProject.media.length) % activeProject.media.length;
     setLightbox({ projectId: lightbox.projectId, mediaIndex: next });
   }, [lightbox, activeProject]);
+
+  useEffect(() => {
+    const prev = document.title;
+    document.title = 'Projects — Chhay Vizual';
+    return () => { document.title = prev; };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
@@ -118,8 +136,8 @@ export default function ProjectsPage() {
 
       {/* Page heading */}
       <div ref={headingRef} className="reveal pt-40 pb-16 px-8 md:px-16">
-        <h2 className="text-[clamp(3rem,10vw,10rem)] font-bold uppercase tracking-tighter leading-none">
-          My<br />Projects
+        <h2 className="text-[clamp(2rem,8vw,8rem)] font-bold uppercase tracking-tighter leading-none whitespace-nowrap">
+          My Projects
         </h2>
         <p className="mt-6 text-sm opacity-50 tracking-wide max-w-lg">
           A complete collection of architectural visualization and 3D rendering work.
@@ -127,12 +145,57 @@ export default function ProjectsPage() {
       </div>
 
       {/* Projects */}
-      <div className="px-8 md:px-16 pb-40 flex flex-col gap-32">
-        {projects.map((project) => (
+      <div className="px-8 md:px-16 flex flex-col gap-32">
+        {visibleProjects.map((project) => (
           <ProjectBlock key={project.id} project={project}
             onLightbox={(idx) => setLightbox({ projectId: project.id, mediaIndex: idx })} />
         ))}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="px-8 md:px-16 py-24 flex items-center justify-center gap-4">
+          <button
+            onClick={() => goToPage(page - 1)}
+            disabled={page === 0}
+            className="w-12 h-12 border border-zinc-700 flex items-center justify-center hover:bg-brutalist-grey hover:text-brutalist-black disabled:opacity-20 disabled:pointer-events-none transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => goToPage(i)}
+              className={`w-12 h-12 border text-sm font-bold uppercase tracking-widest transition-colors ${
+                i === page
+                  ? 'bg-brutalist-grey text-brutalist-black border-brutalist-grey'
+                  : 'border-zinc-700 hover:border-brutalist-grey'
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => goToPage(page + 1)}
+            disabled={page === totalPages - 1}
+            className="w-12 h-12 border border-zinc-700 flex items-center justify-center hover:bg-brutalist-grey hover:text-brutalist-black disabled:opacity-20 disabled:pointer-events-none transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          <span className="text-[10px] font-mono tracking-[0.3em] opacity-40 ml-2">
+            {page + 1} / {totalPages}
+          </span>
+        </div>
+      )}
+
+      <div className="pb-16" />
 
       {/* Scroll to top button */}
       <button

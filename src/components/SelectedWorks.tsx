@@ -1,152 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useReveal } from '../hooks/useReveal';
-
-const projects = [
-  {
-    id: '01',
-    title: 'Aura Sandstone Villa',
-    category: 'Residential',
-    year: '2024',
-    hero: '/Chay_Visual/Aura Sandstone Villa/Exterior View 1.webp',
-    thumbs: [
-      '/Chay_Visual/Aura Sandstone Villa/Inteiror 1.webp',
-      '/Chay_Visual/Aura Sandstone Villa/Interior 2.webp',
-      '/Chay_Visual/Aura Sandstone Villa/Pool View.webp',
-    ],
-  },
-  {
-    id: '02',
-    title: 'Japandi Homestay',
-    category: 'Interior Design',
-    year: '2024',
-    hero: '/Chay_Visual/Japandi/Home stay view1.jpg',
-    thumbs: [
-      '/Chay_Visual/Japandi/Home stay view2.jpg',
-      '/Chay_Visual/Japandi/Homestay View3.jpg',
-      '/Chay_Visual/Japandi/Homestay View4.jpg',
-    ],
-  },
-  {
-    id: '03',
-    title: 'Contemporary Kitchen',
-    category: 'Interior Design',
-    year: '2023',
-    hero: '/Chay_Visual/kitchen/Kitchen1.webp',
-    thumbs: [
-      '/Chay_Visual/kitchen/Dinning Table.webp',
-      '/Chay_Visual/kitchen/Kitchen 2.webp',
-      '/Chay_Visual/kitchen/Living Room 1.webp',
-    ],
-  },
-  {
-    id: '04',
-    title: 'Room Series',
-    category: 'Spatial Design',
-    year: '2023',
-    hero: '/Chay_Visual/Room/1-.jpg',
-    thumbs: [
-      '/Chay_Visual/Room/3-.jpg',
-      '/Chay_Visual/Room/4.jpg',
-      '/Chay_Visual/Room/5.jpg',
-    ],
-  },
-  {
-    id: '05',
-    title: 'The Sauna Suite',
-    category: 'Wellness & Hospitality',
-    year: '2024',
-    hero: '/Chay_Visual/The Sauna Suite/02. Indoor Pool.jpg',
-    thumbs: [
-      '/Chay_Visual/The Sauna Suite/03. Pool 2_.jpg',
-      '/Chay_Visual/The Sauna Suite/04. Outdoor1_.jpg',
-      '/Chay_Visual/The Sauna Suite/11. Lving Room_.jpg',
-    ],
-  },
-  {
-    id: '06',
-    title: 'Emerald Oasis',
-    category: 'Residential',
-    year: '2024',
-    hero: '/Chay_Visual/Emerald Oasis/Entrance 1.jpg',
-    thumbs: [
-      '/Chay_Visual/Emerald Oasis/Living Room.jpg',
-      '/Chay_Visual/Emerald Oasis/Dinning 1.jpg',
-      '/Chay_Visual/Emerald Oasis/Study Room 1.jpg',
-    ],
-  },
-  {
-    id: '07',
-    title: 'Mid-Mod Muse',
-    category: 'Interior Design',
-    year: '2024',
-    hero: '/Chay_Visual/Mid-Mod Muse/01. Living Room.jpg',
-    thumbs: [
-      '/Chay_Visual/Mid-Mod Muse/03. Dinning table.jpg',
-      '/Chay_Visual/Mid-Mod Muse/07. workplace.jpg',
-      '/Chay_Visual/Mid-Mod Muse/12. Game room.jpg',
-    ],
-  },
-  {
-    id: '08',
-    title: 'The Digital Dojo',
-    category: 'Spatial Design',
-    year: '2025',
-    hero: '/Chay_Visual/The Digital Dojo/2 (1).jpg',
-    thumbs: [
-      '/Chay_Visual/The Digital Dojo/4.jpg',
-      '/Chay_Visual/The Digital Dojo/6.jpg',
-      '/Chay_Visual/The Digital Dojo/9.jpg',
-    ],
-  },
-  {
-    id: '09',
-    title: 'Whispers of Calm',
-    category: 'Interior Design',
-    year: '2025',
-    hero: '/Chay_Visual/Whispers of Calm/Living room 1 (1).jpg',
-    thumbs: [
-      '/Chay_Visual/Whispers of Calm/Dinning Room.jpg',
-      '/Chay_Visual/Whispers of Calm/Living Room 2 (1).jpg',
-      '/Chay_Visual/Whispers of Calm/COffee.jpg',
-    ],
-  },
-  {
-    id: '10',
-    title: "The Artisan's Rest",
-    category: 'Interior Design',
-    year: '2025',
-    hero: "/Chay_Visual/The Artisan's Rest/1 Bedview.jpg",
-    thumbs: [
-      "/Chay_Visual/The Artisan's Rest/2 Cafe Machine.jpg",
-      "/Chay_Visual/The Artisan's Rest/6 Piano.jpg",
-      "/Chay_Visual/The Artisan's Rest/Bathroom 1.jpg",
-    ],
-  },
-  {
-    id: '11',
-    title: 'The Mosaic Residence',
-    category: 'Residential',
-    year: '2025',
-    hero: '/Chay_Visual/The Mosaic Residence/05. Living Room_.jpg',
-    thumbs: [
-      '/Chay_Visual/The Mosaic Residence/01. Table View.jpg',
-      '/Chay_Visual/The Mosaic Residence/03. Kitchen_.jpg',
-      '/Chay_Visual/The Mosaic Residence/06. Bedroom 01_.jpg',
-    ],
-  },
-  {
-    id: '12',
-    title: 'The Sunlit Foyer',
-    category: 'Interior Design',
-    year: '2025',
-    hero: '/Chay_Visual/The Sunlit Foyer/Entrance1-.jpg',
-    thumbs: [
-      '/Chay_Visual/The Sunlit Foyer/Hallway1.jpg',
-      '/Chay_Visual/The Sunlit Foyer/Kitchen-.jpg',
-      '/Chay_Visual/The Sunlit Foyer/Bathroom-.jpg',
-    ],
-  },
-];
+import { useSlideProjects } from '../hooks/useProjects';
 
 function getTitleFontSize(title: string) {
   const total = title.replace(/\s/g, '').length;
@@ -160,13 +14,14 @@ function getTitleFontSize(title: string) {
 }
 
 export default function SelectedWorks() {
+  const projects = useSlideProjects();
   const [current, setCurrent] = useState(0);
   const [activeThumb, setActiveThumb] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
   const leftRef = useReveal<HTMLDivElement>();
   const rightRef = useReveal<HTMLDivElement>(150);
 
-  const project = projects[current];
+  const project = projects[current] ?? projects[0];
 
   const prev = useCallback(() => {
     setActiveThumb(null);
@@ -191,7 +46,7 @@ export default function SelectedWorks() {
       setCurrent((c) => (c + 1) % projects.length);
     }, 3000);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, projects.length]);
 
   return (
     <section
@@ -231,6 +86,7 @@ export default function SelectedWorks() {
           <div className="flex items-center gap-4">
             <button
               onClick={prev}
+              aria-label="Previous project"
               className="w-12 h-12 border border-zinc-700 flex items-center justify-center hover:bg-brutalist-grey hover:text-brutalist-black transition-colors duration-150"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -239,6 +95,7 @@ export default function SelectedWorks() {
             </button>
             <button
               onClick={next}
+              aria-label="Next project"
               className="w-12 h-12 border border-zinc-700 flex items-center justify-center hover:bg-brutalist-grey hover:text-brutalist-black transition-colors duration-150"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -258,63 +115,71 @@ export default function SelectedWorks() {
         </div>
       </div>
 
-      {/* Right: ALL images pre-rendered in DOM, visibility toggled via opacity only */}
+      {/* Right: only prev/current/next rendered to avoid loading all images */}
       <div ref={rightRef} className="reveal flex-1 w-full flex flex-col gap-2 relative">
         <span className="absolute -top-4 -left-4 font-light text-2xl opacity-40 pointer-events-none select-none">+</span>
 
-        {/* Hero stack  every project rendered, only active one visible */}
         <div className="w-full relative overflow-hidden" style={{ height: 'min(55vw, 560px)' }}>
-          {projects.map((p, pi) => (
-            <div
-              key={pi}
-              className="absolute inset-0 transition-all duration-700 ease-in-out"
-              style={{
-                opacity: pi === current ? 1 : 0,
-                transform: pi === current ? 'scale(1)' : 'scale(1.04)',
-                willChange: 'opacity, transform',
-                pointerEvents: pi === current ? 'auto' : 'none',
-              }}
-            >
-              {/* Base hero */}
-              <img
-                src={p.hero}
-                alt={p.title}
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              {/* Thumb overlays for this project */}
-              {p.thumbs.map((thumb, j) => (
+          {projects.map((p, pi) => {
+            const len = projects.length;
+            const isActive = pi === current;
+            const isAdjacent = pi === (current - 1 + len) % len || pi === (current + 1) % len;
+            if (!isActive && !isAdjacent) return null;
+            return (
+              <div
+                key={pi}
+                className="absolute inset-0 transition-all duration-700 ease-in-out"
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'scale(1)' : 'scale(1.04)',
+                  willChange: 'opacity, transform',
+                  pointerEvents: isActive ? 'auto' : 'none',
+                }}
+              >
                 <img
-                  key={j}
-                  src={thumb}
-                  alt={`${p.title} view ${j + 2}`}
+                  src={p.hero}
+                  alt={p.title}
                   decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-150 pointer-events-none"
-                  style={{ opacity: pi === current && activeThumb === j ? 1 : 0, willChange: 'opacity' }}
+                  loading={isActive ? 'eager' : 'lazy'}
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-              ))}
-            </div>
-          ))}
+                {p.thumbs.map((thumb, j) => (
+                  <img
+                    key={j}
+                    src={thumb}
+                    alt={`${p.title} view ${j + 2}`}
+                    decoding="async"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-150 pointer-events-none"
+                    style={{ opacity: isActive && activeThumb === j ? 1 : 0, willChange: 'opacity' }}
+                  />
+                ))}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Thumbnails  current project only */}
+        {/* Thumbnails — always 3, pad with hero if fewer available */}
         <div className="grid grid-cols-3 gap-2">
-          {project.thumbs.map((thumb, j) => (
-            <div
-              key={`${current}-${j}`}
-              onMouseEnter={() => setActiveThumb(j)}
-              onMouseLeave={() => setActiveThumb(null)}
-              className={`overflow-hidden cursor-pointer transition-opacity duration-150 ${activeThumb === j ? 'opacity-100 ring-1 ring-brutalist-grey' : 'opacity-50 hover:opacity-100'}`}
-            >
-              <img
-                src={thumb}
-                alt={`${project.title} view ${j + 2}`}
-                decoding="async"
-                className="w-full object-cover"
-                style={{ height: 'min(16vw, 180px)' }}
-              />
-            </div>
-          ))}
+          {Array.from({ length: 3 }, (_, j) => {
+            const src = project.thumbs[j] ?? project.hero;
+            return (
+              <div
+                key={`${current}-${j}`}
+                onMouseEnter={() => setActiveThumb(j)}
+                onMouseLeave={() => setActiveThumb(null)}
+                className={`overflow-hidden cursor-pointer transition-opacity duration-150 ${activeThumb === j ? 'opacity-100 ring-1 ring-brutalist-grey' : 'opacity-50 hover:opacity-100'}`}
+              >
+                <img
+                  src={src}
+                  alt={`${project.title} view ${j + 2}`}
+                  decoding="async"
+                  className="w-full object-cover"
+                  style={{ height: 'min(16vw, 180px)' }}
+                />
+              </div>
+            );
+          })}
         </div>
 
         <div className="flex justify-between items-center text-[10px] uppercase tracking-[0.2em] opacity-40 mt-1">

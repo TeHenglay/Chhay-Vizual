@@ -1,4 +1,4 @@
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, OrbitControls, Bounds, Center } from '@react-three/drei';
 import * as THREE from 'three';
@@ -7,14 +7,13 @@ function Model() {
   const groupRef = useRef<THREE.Group>(null);
   const { scene } = useGLTF('/bust-of-david.glb');
 
-  // The model remains static (no rotation)
-
-  // Make materials double sided
-  scene.traverse((child: any) => {
-    if (child.isMesh && child.material) {
-      child.material.side = THREE.DoubleSide;
-    }
-  });
+  useEffect(() => {
+    scene.traverse((child: any) => {
+      if (child.isMesh && child.material) {
+        child.material.side = THREE.DoubleSide;
+      }
+    });
+  }, [scene]);
 
   return (
     <group ref={groupRef}>

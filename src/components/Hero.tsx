@@ -33,8 +33,8 @@ export default function Hero() {
       </span>
 
       {/* Hero Headline */}
-      <section className="w-full text-center px-4">
-        <div className="flex flex-col md:flex-row md:justify-center md:gap-[0.2em]">
+      <header className="w-full text-center px-4">
+        <h1 className="flex flex-col md:flex-row md:justify-center md:gap-[0.2em]">
           <span
             className="hero-text uppercase text-brutalist-grey hero-word"
             style={{ fontSize: 'clamp(3.5rem, 22vw, 14rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}
@@ -47,14 +47,14 @@ export default function Hero() {
           >
             VIZUAL
           </span>
-        </div>
+        </h1>
         <p className="uppercase tracking-[0.2em] md:tracking-[0.4em] text-base sm:text-2xl md:text-4xl mt-2 text-brutalist-grey opacity-70">
           ARCHITECTURAL <span className="opacity-50">✦</span> VISUALIZATION
         </p>
         <p className="uppercase tracking-[0.15em] md:tracking-[0.3em] text-sm sm:text-lg md:text-2xl mt-1 text-brutalist-grey opacity-40">
           DESIGN <span className="opacity-50">·</span> RENDER <span className="opacity-50">·</span> VISUAL
         </p>
-      </section>
+      </header>
 
       {/* Description */}
       <section className="hero-sub mt-12 flex flex-col items-center max-w-lg text-center px-6">

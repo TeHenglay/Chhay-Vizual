@@ -22,6 +22,8 @@ export default function LoadingScreen() {
       <img
         src="/chay-logo.png"
         alt="Chhay Vizual"
+        width={96}
+        height={96}
         className="h-24 w-auto object-contain mb-6"
       />
       <p className="uppercase tracking-[0.4em] text-sm text-brutalist-grey opacity-50">
