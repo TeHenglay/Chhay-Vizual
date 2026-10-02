@@ -2,7 +2,7 @@
 // (static HTML per route, for crawlers and link previews that don't run JavaScript).
 // Plain JS so the Node build scripts can import it without a TypeScript step.
 
-export const SITE = 'https://chhay-vizual.vercel.app';
+export const SITE = 'https://www.chhayvizual.com';
 export const SITE_NAME = 'Chhay Vizual';
 const DEFAULT_IMAGE = '/og-image.jpg';
 

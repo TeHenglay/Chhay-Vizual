@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://chhay-vizual.vercel.app/sitemap.xml
+Sitemap: https://www.chhayvizual.com/sitemap.xml
