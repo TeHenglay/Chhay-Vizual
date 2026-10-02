@@ -17,8 +17,8 @@ export default function AdminLogin() {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
       navigate('/admin/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'Login failed');
+    } catch (err) {
+      setError((err as { message?: string } | null)?.message || 'Login failed');
     } finally {
       setLoading(false);
     }

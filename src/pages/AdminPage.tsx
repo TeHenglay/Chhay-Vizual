@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import type { Session } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 import AdminLogin from '../components/AdminLogin';
+import { useMeta } from '../hooks/useMeta';
 import AdminDashboard from '../components/AdminDashboard';
 
 export default function AdminPage() {
-  const [session, setSession] = useState<any>(null);
+  useMeta(null, { noindex: true });
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

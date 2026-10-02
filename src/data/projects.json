@@ -1,0 +1,698 @@
+[
+  {
+    "id": "01",
+    "title": "Aura Sandstone Villa",
+    "category": "Residential",
+    "year": "2024",
+    "media": [
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/villa.mp4",
+        "type": "video",
+        "poster": "/Chay_Visual/Aura Sandstone Villa/villa-poster.webp",
+        "w": 1920,
+        "h": 1080
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Exterior View 1.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Exterior View 2.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Exterior 3.webp",
+        "type": "image",
+        "w": 1125,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Inteiror 1.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Interior 2.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      },
+      {
+        "src": "/Chay_Visual/Aura Sandstone Villa/Pool View.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      }
+    ]
+  },
+  {
+    "id": "02",
+    "title": "Japandi Homestay",
+    "category": "Interior Design",
+    "year": "2024",
+    "media": [
+      {
+        "src": "/Chay_Visual/Japandi/Home stay view1.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Japandi/Home stay view2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Japandi/Homestay View3.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Japandi/Homestay View4.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Japandi/Homestay View5-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "03",
+    "title": "Contemporary Kitchen",
+    "category": "Interior Design",
+    "year": "2023",
+    "media": [
+      {
+        "src": "/Chay_Visual/kitchen/Blue piano-7.mp4",
+        "type": "video",
+        "poster": "/Chay_Visual/kitchen/Blue piano-7-poster.webp",
+        "w": 1080,
+        "h": 1370
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Kitchen1.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Dinning Table.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Kitchen 2.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Kitchen Closeup.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Living Room 1.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/kitchen/Sofa 1.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "04",
+    "title": "Room Series",
+    "category": "Spatial Design",
+    "year": "2023",
+    "media": [
+      {
+        "src": "/Chay_Visual/Room/1-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Room/3-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Room/4.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Room/5.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Room/6.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Room/7.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "05",
+    "title": "The Sauna Suite",
+    "category": "Wellness & Hospitality",
+    "year": "2024",
+    "media": [
+      {
+        "src": "/Chay_Visual/The Sauna Suite/02. Indoor Pool.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sauna Suite/03. Pool 2_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sauna Suite/04. Outdoor1_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sauna Suite/07. Hallway View1_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sauna Suite/11. Lving Room_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sauna Suite/12.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "06",
+    "title": "Emerald Oasis",
+    "category": "Residential",
+    "year": "2024",
+    "media": [
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Entrance 1.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Entrance 2.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Fish eye view.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Living Room.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Dinning 1.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Dinning_.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/kitchen.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/kitchen detail.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Detail 1.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Study Room 1.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Study Room 2.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Emerald Oasis/Study Room 3.webp",
+        "type": "image",
+        "w": 1579,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "07",
+    "title": "Mid-Mod Muse",
+    "category": "Interior Design",
+    "year": "2024",
+    "media": [
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/01. Living Room.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/02. Living Room view2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/03. Dinning table.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/04.Bathroom View2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/05. Bathroom.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/06. Workplace closeup.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/07. workplace.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/08. kitchen 1.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/09. kitcvhen 2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/10. game room view2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/11. Marshall closeup.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/12. Game room.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/13. Son bedroom view2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/14. Son Bedroom.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Mid-Mod Muse/15. son room view3.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "08",
+    "title": "The Digital Dojo",
+    "category": "Spatial Design",
+    "year": "2025",
+    "media": [
+      {
+        "src": "/Chay_Visual/The Digital Dojo/2 (1).webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/3.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/4.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/5.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/6.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/7.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/8(no bloom).webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/9.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/10 .webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/11.webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/12 (1).webp",
+        "type": "image",
+        "w": 1500,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Digital Dojo/14.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1125
+      }
+    ]
+  },
+  {
+    "id": "09",
+    "title": "Whispers of Calm",
+    "category": "Interior Design",
+    "year": "2025",
+    "media": [
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Entrance.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Living room 1 (1).webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Living Room 2 (1).webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Living room 3.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Living Room half.webp",
+        "type": "image",
+        "w": 1600,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Living Room half 1.webp",
+        "type": "image",
+        "w": 1600,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Dinning Room.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/Dinning Table 1.webp",
+        "type": "image",
+        "w": 2000,
+        "h": 1332
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/COffee.webp",
+        "type": "image",
+        "w": 1334,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/close up 1.webp",
+        "type": "image",
+        "w": 1334,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/1.webp",
+        "type": "image",
+        "w": 1334,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/Whispers of Calm/2.webp",
+        "type": "image",
+        "w": 1334,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "The Mosaic Residence",
+    "category": "Residential",
+    "year": "2025",
+    "media": [
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/01. Table View.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/02. Sofa_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/03. Kitchen_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/04. Kitchen 01_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/05. Living Room_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/06. Bedroom 01_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/07. Bedroom 01 View2_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/08. Bedroom 01 View3_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Mosaic Residence/09. Table close up_.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "title": "The Sunlit Foyer",
+    "category": "Interior Design",
+    "year": "2025",
+    "media": [
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Entrance1-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Entrance 2 (1).webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Entrance closeup.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Hallway1.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Hallway2-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Kitchen-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Kitchen 2 (1).webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Bathroom-.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Bathroom view2.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      },
+      {
+        "src": "/Chay_Visual/The Sunlit Foyer/Kid Entertainment -.webp",
+        "type": "image",
+        "w": 1595,
+        "h": 2000
+      }
+    ]
+  }
+]

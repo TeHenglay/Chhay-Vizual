@@ -1,56 +1,39 @@
 import './index.css'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import LoadingScreen from './components/LoadingScreen'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import SelectedWorks from './components/SelectedWorks'
-import About from './components/About'
-import SkillsMarquee from './components/SkillsMarquee'
-import Skills from './components/Skills'
-import Contact from './components/Contact'
+import HomePage from './pages/HomePage'
+import ProjectsPage from './pages/ProjectsPage'
+import ProjectPage from './pages/ProjectPage'
+import ScrollToTop from './components/ScrollToTop'
+import { markHydrated } from './lib/hydration'
+
+// Admin is the only client-only route; public pages are prerendered (src/entry-server.tsx)
 const AdminPage = lazy(() => import('./pages/AdminPage'))
 
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
-import ScrollToTop from './components/ScrollToTop'
+const fallback = <div className="min-h-screen bg-brutalist-black" />
 
-function Home() {
+export function AppRoutes() {
   return (
-    <div className="font-sans antialiased select-none overflow-y-auto bg-brutalist-black text-brutalist-grey">
-      <Header />
-      <Navbar />
-      <Hero />
-      <SelectedWorks />
-      <About />
-      <SkillsMarquee />
-      <Skills />
-      <Contact />
-    </div>
+    <Suspense fallback={fallback}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/work/:slug" element={<ProjectPage />} />
+        <Route path="/admin/*" element={<AdminPage />} />
+      </Routes>
+    </Suspense>
   )
 }
 
 function App() {
+  // Runs after every child has committed, i.e. once hydration is done
+  useEffect(markHydrated, [])
+
   return (
-    <>
-    <LoadingScreen />
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={
-            <Suspense fallback={<div className="min-h-screen bg-brutalist-black" />}>
-              <ProjectsPage />
-            </Suspense>
-          } />
-        <Route path="/admin/*" element={
-            <Suspense fallback={<div className="min-h-screen bg-brutalist-black" />}>
-              <AdminPage />
-            </Suspense>
-          } />
-      </Routes>
+      <AppRoutes />
     </BrowserRouter>
-    </>
   )
 }
 

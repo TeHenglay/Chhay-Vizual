@@ -106,8 +106,8 @@ export default function ProjectUploadForm({ onProjectAdded, onCancel, editProjec
       }
 
       onProjectAdded();
-    } catch (err: any) {
-      setError(err.message || 'Failed to save project');
+    } catch (err) {
+      setError((err as { message?: string } | null)?.message || 'Failed to save project');
     } finally {
       setLoading(false);
     }

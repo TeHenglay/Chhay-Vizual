@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import type { User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import ProjectUploadForm from './ProjectUploadForm';
@@ -44,7 +45,7 @@ function DeleteModal({ title, onConfirm, onCancel }: { title: string; onConfirm:
 }
 
 export default function AdminDashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [showUploadForm, setShowUploadForm] = useState(false);

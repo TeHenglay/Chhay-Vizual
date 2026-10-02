@@ -1,117 +1,76 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
-import { projects as staticProjects, MediaItem } from '../data/projects';
+import { projects as staticProjects, type MediaItem, type Project } from '../data/projects';
 
-export type SlideProject = {
-  id: string;
+export type PageProject = Project;
+
+type Row = {
   title: string;
   category: string;
   year: string;
-  hero: string;
-  thumbs: string[];
+  description: string | null;
+  image_urls: string[] | null;
 };
 
-export type PageProject = typeof staticProjects[number];
+const VIDEO_EXT = /\.(mp4|mov|webm)(\?|$)/i;
 
 // Module-level cache — fetched once per page session
-let slideCache: SlideProject[] | null = null;
-let pageCache: PageProject[] | null = null;
-let fetchPromise: Promise<void> = Promise.resolve();
-let fetched = false;
+let remoteCache: PageProject[] | null = null;
+let fetchPromise: Promise<void> | null = null;
 
 function fetchProjects(): Promise<void> {
-  if (fetched) return fetchPromise;
-  fetched = true;
-  fetchPromise = Promise.resolve(
-    supabase
-      .from('projects')
-      .select('id, title, category, year, image_urls')
-      .order('created_at', { ascending: false })
-      .then(({ data }) => {
-      if (!data?.length) {
-        slideCache = [];
-        pageCache = [];
-        return;
-      }
-      slideCache = data
+  // Supabase is loaded on demand so it stays out of the first-paint bundle
+  fetchPromise ??= import('../lib/supabase')
+    .then(({ supabase }) =>
+      supabase
+        .from('projects')
+        .select('title, category, year, description, image_urls')
+        .order('created_at', { ascending: false })
+    )
+    .then(({ data }) => {
+      remoteCache = ((data ?? []) as Row[])
         .map((p, i) => ({
           id: String(staticProjects.length + i + 1).padStart(2, '0'),
           title: p.title,
           category: p.category,
           year: p.year,
-          hero: p.image_urls?.[0] ?? '',
-          thumbs: (p.image_urls ?? []).slice(1, 4) as string[],
+          description: p.description?.trim() || undefined,
+          media: (p.image_urls ?? []).map(
+            (src): MediaItem => ({ src, type: VIDEO_EXT.test(src) ? 'video' : 'image' })
+          ),
         }))
-        .filter((p) => p.hero);
-
-      pageCache = data
-        .map((p, i) => ({
-          id: String(staticProjects.length + i + 1).padStart(2, '0'),
-          title: p.title,
-          category: p.category,
-          year: p.year,
-          media: (p.image_urls ?? []).map((src: string) => ({ src, type: 'image' as const })) as MediaItem[],
-        }))
-        .filter((p) => p.media.length > 0) as PageProject[];
+        .filter((p) => p.media.length > 0);
     })
-  );
+    .catch(() => {
+      remoteCache = [];
+    });
   return fetchPromise;
 }
 
-export function useSlideProjects(): SlideProject[] {
-  const [projects, setProjects] = useState<SlideProject[]>(() =>
-    slideCache ? [...slideCache, ...staticProjects.map(p => ({
-      id: p.id,
-      title: p.title,
-      category: p.category,
-      year: p.year,
-      hero: p.media[0]?.src ?? '',
-      thumbs: p.media.slice(1, 4).map(m => m.src),
-    }))] : staticProjects.map(p => ({
-      id: p.id,
-      title: p.title,
-      category: p.category,
-      year: p.year,
-      hero: p.media[0]?.src ?? '',
-      thumbs: p.media.slice(1, 4).map(m => m.src),
-    }))
-  );
+const merge = () => [...(remoteCache ?? []), ...staticProjects];
+
+/** All projects (uploaded first), plus whether the remote fetch has settled. */
+export function useProjectsState(): { projects: PageProject[]; ready: boolean } {
+  const [state, setState] = useState(() => ({ projects: merge(), ready: remoteCache !== null }));
 
   useEffect(() => {
-    if (slideCache !== null && slideCache.length >= 0) return;
-    void fetchProjects().then(() => {
-      if (slideCache?.length) {
-        setProjects([
-          ...slideCache,
-          ...staticProjects.map(p => ({
-            id: p.id,
-            title: p.title,
-            category: p.category,
-            year: p.year,
-            hero: p.media[0]?.src ?? '',
-            thumbs: p.media.slice(1, 4).map(m => m.src),
-          })),
-        ]);
-      }
-    });
+    if (remoteCache !== null) return;
+    let alive = true;
+    const load = () =>
+      void fetchProjects().then(() => {
+        if (alive) setState({ projects: merge(), ready: true });
+      });
+    // Static projects are already on screen; fetch uploads once the browser is idle
+    // so the request never competes with first paint
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    idle(load);
+    return () => { alive = false; };
   }, []);
 
-  return projects;
+  return state;
 }
 
 export function usePageProjects(): PageProject[] {
-  const [projects, setProjects] = useState<PageProject[]>(() =>
-    pageCache ? [...pageCache, ...staticProjects] : staticProjects
-  );
-
-  useEffect(() => {
-    if (pageCache !== null) return;
-    void fetchProjects().then(() => {
-      if (pageCache?.length) {
-        setProjects([...pageCache, ...staticProjects]);
-      }
-    });
-  }, []);
-
-  return projects;
+  return useProjectsState().projects;
 }
+
+export { slugify } from '../lib/seo';
